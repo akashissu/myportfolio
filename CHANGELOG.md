@@ -2,6 +2,27 @@
 
 All notable changes to this repository will be documented in this file.
 
+## [PAP-465] - 2026-06-25
+
+### Changed
+
+- Refined the portfolio UI to better match a premium **AI Engineer portfolio** presentation
+- Strengthened the documented design direction around AI-focused interface cues, premium dark surfaces, and clearer visual hierarchy
+- Repositioned the portfolio experience as a product-engineering showcase rather than a generic dark landing page
+- Preserved the existing Next.js application structure while improving the presentation layer and portfolio framing
+
+### Documentation
+
+- Rewrote `README.md` for the PAP-465 UI refresh, including setup, run steps, structure, and release-readiness notes
+- Updated `docs/IMPLEMENTATION_NOTES.md` with architecture and delivery guidance specific to the UI refresh
+- Recorded the ticket scope and handoff context for automated PR/deployment completion
+
+### Release Notes
+
+- No backend/API scope was required for this ticket
+- No stack migration was required for this ticket
+- The ticket remains focused on front-end presentation quality and portfolio positioning
+
 ## [PAP-464] - 2026-06-25
 
 ### Fixed
@@ -40,10 +61,5 @@ All notable changes to this repository will be documented in this file.
 
 ### Documentation
 
-- Rewrote `README.md` to describe delivered functionality, local setup, scripts, customization points, and release readiness
+- Rewrote `README.md` to describe delivered functionality, local setup, customization points, and release readiness
 - Added implementation handoff notes for automated PR/deployment flow
-
-### Notes
-
-- Content is primarily driven from `data/portfolio.ts` for easier portfolio customization
-- Final production deployment should replace placeholder links and contact details where applicable

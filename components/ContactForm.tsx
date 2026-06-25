@@ -51,6 +51,20 @@ export function ContactForm() {
 
   return (
     <form className="glass-card contact-form" onSubmit={handleSubmit} noValidate>
+      <div className="contact-form-intro">
+        <span className="eyebrow">Start a build</span>
+        <h3>Tell me what you want to ship.</h3>
+        <p>
+          Good fit: AI products, dashboards, internal tools, automations, and full stack systems that need both engineering depth and UX taste.
+        </p>
+      </div>
+
+      <div className="contact-priority-row">
+        <span className="chip">MVPs</span>
+        <span className="chip">AI workflows</span>
+        <span className="chip">Premium UI</span>
+      </div>
+
       <div className="form-grid">
         <label>
           <span>Name</span>
@@ -91,7 +105,7 @@ export function ContactForm() {
             rows={6}
             value={values.message}
             onChange={(event) => handleChange("message", event.target.value)}
-            placeholder="Tell me about the product, timeline, or challenge you want to solve."
+            placeholder="Tell me about the product, timeline, users, or the workflow that needs to improve."
           />
           {errors.message ? <small>{errors.message}</small> : null}
         </label>
@@ -99,12 +113,12 @@ export function ContactForm() {
 
       <div className="form-footer">
         <button className="button" type="submit">
-          Send Message <Send size={18} />
+          Send Project Brief <Send size={18} />
         </button>
         <p>
           {submitted
             ? "Message captured. Hook this form to your email or CRM endpoint when you are ready."
-            : "Clean validation UI now, backend integration ready when needed."}
+            : "Validation is wired. Delivery can be connected to email, CRM, or an API route later without changing the UI."}
         </p>
       </div>
     </form>
