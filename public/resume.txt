@@ -1,0 +1,13 @@
+Full Stack AI Engineer Resume Placeholder
+=======================================
+
+Portfolio contact: hello@ai-engineer.dev
+
+Summary:
+- Full Stack AI Engineer focused on modern SaaS, automation platforms, and AI-native product development.
+- Specialties include Next.js, TypeScript, Node.js, Python, OpenAI integrations, workflow automation, and scalable system design.
+
+Experience highlights:
+- 20+ projects shipped
+- 3+ years building intelligent web applications
+- Available for freelance and remote collaborations
