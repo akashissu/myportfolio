@@ -1,79 +1,56 @@
-# PAP-463 — Full Stack AI Engineer Portfolio
+# PAP-463 / PAP-464 — Full Stack AI Engineer Portfolio
 
 A modern, premium, highly interactive personal portfolio website for a **Full Stack AI Engineer**, built with **Next.js**, **React**, **TypeScript**, **Framer Motion**, and **Lucide React**.
 
-The experience is designed to feel futuristic and polished while staying readable, responsive, and fast. The UI combines dark-mode SaaS styling with glassmorphism, gradients, motion, and AI-inspired visual treatment.
+This repository now includes both:
+
+- **PAP-463** — the original portfolio implementation
+- **PAP-464** — deployment-readiness and security remediation after Vercel flagged a vulnerable Next.js version during build
 
 ## What was built
 
-This ticket delivers a single-page portfolio experience with the following sections and capabilities:
+The app delivers a polished single-page portfolio experience with:
 
-- **Sticky glassmorphism navbar** with section links and responsive navigation behavior
-- **Hero section** with premium AI-engineer positioning, CTA buttons, and quick stats
-- **Animated background layer** to reinforce the futuristic visual style
-- **About section** with positioning copy, highlight cards, and profile/avatar panel
-- **Skills section** grouped across frontend, backend, AI/ML, databases, DevOps, and design
-- **Projects showcase** with featured work cards, stack badges, feature highlights, and action links
-- **Services section** covering consulting and build offerings
-- **Experience timeline** showing role progression and technologies used
-- **Testimonials section** with social proof cards and ratings
-- **Contact section** with contact details, social links, and a styled contact form
-- **Premium footer** aligned to the personal brand narrative
+- Sticky glassmorphism navigation
+- Hero section with positioning copy, CTAs, and quick stats
+- Futuristic animated background treatment
+- About section with profile and highlight cards
+- Skills section grouped by discipline
+- Projects showcase with stack badges and feature highlights
+- Services section
+- Experience timeline
+- Testimonials/social proof
+- Contact section with direct contact info and contact form UI
+- Premium footer and cohesive dark SaaS-style visual system
 
-## Product goals
+## PAP-464: what the issue was
 
-The portfolio is positioned to help attract:
+The deployment logs showed that the application built successfully on Vercel, but the deployment was still flagged because the project depended on a **vulnerable Next.js version**.
 
-- Clients
-- Recruiters
-- Startups
-- Tech companies
-- Remote/freelance opportunities
+Observed problem:
 
-It showcases:
+- Build completed successfully
+- Vercel reported a vulnerable Next.js release
+- The app needed a framework dependency upgrade rather than an application-code fix
 
-- AI application development
-- Full-stack engineering capability
-- Product-minded UX execution
-- SaaS and automation experience
-- Professional brand presentation
+## PAP-464: what was fixed
 
-## Design direction
+For this ticket, the project was updated to use a patched Next.js release so the deployment is ready to proceed without the known vulnerability warning.
 
-The delivered design follows the requested direction:
+Release-facing outcome:
 
-- Dark premium visual system
-- Glass cards and semi-transparent panels
-- Blue/cyan/violet gradient accents
-- Soft glows and depth effects
-- Smooth reveal and hover interactions
-- Strong typography and section spacing
-- Modern AI/SaaS-inspired layout language
+- Upgraded `next` to a patched version
+- Upgraded `eslint-config-next` to the matching patched version
+- Refreshed lockfile dependencies
+- Confirmed the project still builds successfully
 
-## Tech stack
+## Current tech stack
 
 - **Next.js 15**
 - **React 19**
 - **TypeScript**
 - **Framer Motion**
 - **Lucide React**
-
-## Project structure
-
-Key implementation files:
-
-- `app/page.tsx` — page entry
-- `app/layout.tsx` — app shell and metadata wrapper
-- `app/globals.css` — styling, layout system, and visual effects
-- `components/PortfolioPage.tsx` — assembled portfolio sections
-- `components/Navbar.tsx` — top navigation
-- `components/Hero.tsx` — hero content and CTA area
-- `components/AnimatedBackground.tsx` — animated visual backdrop
-- `components/ProjectCard.tsx` — featured project cards
-- `components/SkillCard.tsx` — grouped skill display
-- `components/ContactForm.tsx` — contact form UI
-- `data/portfolio.ts` — central portfolio content and section data
-- `src/types` — portfolio data typing
 
 ## Local setup
 
@@ -114,9 +91,26 @@ npm run start
 - `npm run start` — run production server
 - `npm run lint` — run linting
 
+## Project structure
+
+Key implementation files:
+
+- `app/page.tsx` — page entry
+- `app/layout.tsx` — app shell and metadata wrapper
+- `app/globals.css` — styling, layout system, and visual effects
+- `components/PortfolioPage.tsx` — assembled portfolio sections
+- `components/Navbar.tsx` — top navigation
+- `components/Hero.tsx` — hero content and CTA area
+- `components/AnimatedBackground.tsx` — animated visual backdrop
+- `components/ProjectCard.tsx` — featured project cards
+- `components/SkillCard.tsx` — grouped skill display
+- `components/ContactForm.tsx` — contact form UI
+- `data/portfolio.ts` — central portfolio content and section data
+- `src/types` — portfolio data typing
+
 ## Content customization
 
-Most portfolio content is centralized in:
+Most editable portfolio content is centralized in:
 
 - `data/portfolio.ts`
 
@@ -132,27 +126,40 @@ Update that file to change:
 - Social links
 - Contact details
 
-## Release readiness notes
+## Release readiness
 
-Before final deployment, confirm the following as needed for production use:
+For the current state of the repository, release readiness means:
 
-- Replace placeholder social/profile URLs
-- Replace placeholder phone and email if needed
-- Add real resume asset for download if desired
-- Add real project demo/GitHub links
-- Wire the contact form to a backend or form service if submission handling is required
-- Review metadata and Open Graph content for final branding
+- The portfolio implementation is present
+- The Next.js security/deployment issue has been addressed
+- The lockfile is aligned with the dependency update
+- The app builds successfully for production
 
-## Ticket reference
+Recommended final checks before merge/deploy:
 
-- **Ticket:** PAP-463
-- **Scope:** Create a modern, premium, highly interactive personal portfolio website for a Full Stack AI Engineer
+- Verify final social/profile links
+- Verify final contact details
+- Confirm metadata/Open Graph copy matches production branding
+- Confirm contact form behavior if real submissions are required
+
+## Documentation artifacts for handoff
+
+Additional delivery notes are available in:
+
+- `CHANGELOG.md`
+- `docs/IMPLEMENTATION_NOTES.md`
+- `docs/PAP-464-ARCHITECT-PLAN.md`
+
+## Ticket references
+
+- **PAP-463** — Create a modern, premium, highly interactive personal portfolio website for a Full Stack AI Engineer
+- **PAP-464** — Check Once Whats the issue And Fix it
 
 ## Handoff summary
 
-Implementation is already present in the repo. This documentation update prepares the ticket for automated PR completion by clarifying:
+This documentation pass is intended for automated PR completion and deployment handoff. It records:
 
-- What was delivered
-- How to run it
-- Where content lives
-- What to verify before release
+- what the application does
+- what issue blocked clean deployment
+- what was changed to resolve release readiness
+- how to run and verify the project locally
