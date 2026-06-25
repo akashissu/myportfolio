@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Bot, BrainCircuit, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
+import { HeroCommandPanel } from "@/components/HeroCommandPanel";
 import type { Stat } from "@/src/types";
 
-const rotatingRoles = ["AI Systems", "Modern SaaS", "Agentic Automation", "Scalable UX"];
+const rotatingRoles = ["AI copilots", "agentic automation", "AI SaaS systems", "high-trust product UX"];
 
 type HeroProps = {
   stats: Stat[];
@@ -33,17 +34,17 @@ export function Hero({ stats }: HeroProps) {
         >
           <div className="hero-pill glass-card">
             <Sparkles size={16} />
-            <span>Premium full stack engineering with an AI-native edge</span>
+            <span>AI-native engineering for serious products, not toy demos</span>
           </div>
 
-          <h1>Building Intelligent, Scalable &amp; Future-Ready Web Applications</h1>
+          <h1>Designing AI products that feel sharp on the surface and solid underneath.</h1>
           <p className="hero-subheadline">
-            I’m a Full Stack AI Engineer specializing in AI-powered web apps, automation systems,
-            scalable backend architecture, and modern user experiences.
+            I build premium AI experiences with strong frontend execution, dependable backend systems,
+            and the product judgment to turn complex workflows into software people actually want to use.
           </p>
 
           <div className="typing-row">
-            <span>Focused on</span>
+            <span>Currently shaping</span>
             <strong key={rotatingRoles[roleIndex]} className="typing-text">
               {rotatingRoles[roleIndex]}
             </strong>
@@ -51,10 +52,10 @@ export function Hero({ stats }: HeroProps) {
 
           <div className="hero-actions">
             <a className="button" href="#projects">
-              View My Work <ArrowRight size={18} />
+              Explore Projects <ArrowRight size={18} />
             </a>
             <a className="button button-secondary" href="#contact">
-              Contact Me
+              Book a Project Call
             </a>
           </div>
 
@@ -74,53 +75,7 @@ export function Hero({ stats }: HeroProps) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
         >
-          <div className="glass-card dashboard-card">
-            <div className="dashboard-header">
-              <div>
-                <span className="eyebrow">AI Command Surface</span>
-                <h2>Realtime product intelligence</h2>
-              </div>
-              <span className="status-badge">Live</span>
-            </div>
-
-            <div className="dashboard-panels">
-              <div className="panel panel-code">
-                <div className="panel-title">
-                  <Bot size={18} />
-                  <span>Agent workflow</span>
-                </div>
-                <code>
-                  deploy(&quot;assistant-saas&quot;)
-                  <br />
-                  connect(&quot;vector-db&quot;)
-                  <br />
-                  monitor(&quot;events&quot;, true)
-                  <br />
-                  respond(&quot;&lt;180ms&quot;)
-                </code>
-              </div>
-
-              <div className="panel-stack">
-                <div className="panel panel-metrics">
-                  <div className="metric-ring" />
-                  <div>
-                    <strong>97.4%</strong>
-                    <span>automation success</span>
-                  </div>
-                </div>
-                <div className="panel panel-insight">
-                  <BrainCircuit size={18} />
-                  <p>AI copilots, APIs, dashboards, and strong product UX working as one system.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="dashboard-footer">
-              <span className="signal signal-blue" />
-              <span className="signal signal-green" />
-              <span className="signal signal-violet" />
-            </div>
-          </div>
+          <HeroCommandPanel />
         </motion.div>
       </div>
     </section>

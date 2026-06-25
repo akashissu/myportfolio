@@ -14,14 +14,26 @@ export type SkillGroup = {
   skills: string[];
 };
 
+export type ProjectMetric = {
+  value: string;
+  label: string;
+};
+
+export type ProjectVariant = "copilot" | "insights" | "commerce" | "studio" | "automation";
+
 export type Project = {
   title: string;
+  eyebrow: string;
   description: string;
   stack: string[];
   features: string[];
   demoUrl: string;
   githubUrl: string;
   accent: string;
+  variant: ProjectVariant;
+  outcome: string;
+  metrics: ProjectMetric[];
+  featured?: boolean;
 };
 
 export type Service = {
