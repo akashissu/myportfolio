@@ -2,6 +2,25 @@
 
 All notable changes to this repository will be documented in this file.
 
+## [PAP-464] - 2026-06-25
+
+### Fixed
+
+- Resolved deployment-readiness issue caused by a vulnerable Next.js dependency version flagged during Vercel build
+- Updated framework dependency set to a patched Next.js release
+- Updated `eslint-config-next` to the corresponding patched version
+- Refreshed dependency lockfile to align with the security remediation
+
+### Verification
+
+- Production build completed successfully after the dependency update
+- The issue was identified as a framework security/version problem rather than an application rendering failure
+
+### Documentation
+
+- Updated `README.md` with issue summary, remediation summary, setup, run steps, and release handoff notes
+- Added/updated implementation notes for deployment and PR reviewers
+
 ## [PAP-463] - 2026-06-25
 
 ### Added

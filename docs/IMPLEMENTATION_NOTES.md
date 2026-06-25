@@ -1,30 +1,40 @@
-# PAP-463 Implementation Notes
+# PAP-463 / PAP-464 Implementation Notes
 
 ## Purpose
 
-This document is a deployment/PR handoff artifact for the portfolio build delivered under **PAP-463**.
+This document is a deployment and PR handoff artifact covering:
 
-Scope for this handoff:
+- **PAP-463** — the portfolio implementation
+- **PAP-464** — the release-readiness/security remediation needed after Vercel flagged the framework version during deployment
 
-- Summarize the delivered architecture
-- Identify where content and presentation are controlled
-- Clarify what should be checked before production deployment
-- Leave a concise record for reviewers and release automation
+## PAP-464 issue summary
+
+The reported problem was not an application compile failure.
+
+What happened:
+
+- Vercel installed dependencies and ran `npm run build`
+- The application compiled and generated static pages successfully
+- After build completion, Vercel flagged the repository because it was using a vulnerable Next.js version
+
+Conclusion:
+
+- The issue was a **dependency security/remediation task**
+- The correct fix path was to upgrade the framework dependency set, not to rework portfolio UI code
 
 ## Delivered architecture
 
-The portfolio is implemented as a component-based Next.js application with a centralized content layer.
+The application remains a component-based Next.js App Router portfolio with centralized content data.
 
 ### Application shell
 
 - `app/page.tsx` renders the portfolio entry point
-- `app/layout.tsx` provides the root layout shell
-- `app/globals.css` contains the visual system, layout rules, gradients, glass styling, and responsive presentation
+- `app/layout.tsx` provides metadata and root layout structure
+- `app/globals.css` contains the visual system, responsive layout rules, and styling effects
 
 ### Main composition
 
-- `components/PortfolioPage.tsx` assembles the entire single-page portfolio
-- It imports reusable presentation components and maps structured content from `data/portfolio.ts`
+- `components/PortfolioPage.tsx` assembles the single-page portfolio experience
 
 ### Reusable UI components
 
@@ -36,78 +46,53 @@ The portfolio is implemented as a component-based Next.js application with a cen
 - `components/SectionHeading.tsx`
 - `components/ContactForm.tsx`
 
-These components support a modular presentation model, keeping content and section-level rendering separate.
-
-## Content model
-
-Portfolio content is centralized in:
+### Content layer
 
 - `data/portfolio.ts`
 
-This file currently owns:
+This file drives:
 
 - Navigation items
-- Quick stats
-- Skill groups
-- Project entries
-- Service entries
-- Experience timeline entries
+- Stats
+- Skills
+- Projects
+- Services
+- Experience timeline
 - Testimonials
 - Social links
 - Contact details
 
-This makes content edits straightforward without requiring layout changes.
+## PAP-464 remediation summary
 
-## UX and visual behaviors reflected in the implementation
+The release fix focused on dependency hygiene and deployment safety.
 
-Based on the delivered component/data structure, the build includes:
+Completed implementation outcome:
 
-- Sticky section-based navigation
-- Premium dark visual direction
-- Glass-card treatment across major sections
-- Motion-based section reveals
-- Highlight cards and hoverable content blocks
-- Featured project cards with stack/features metadata
-- Timeline presentation for experience
-- Social proof/testimonial cards
-- Contact form and direct contact methods
+- Next.js dependency upgraded to a patched version
+- Matching `eslint-config-next` version upgraded as well
+- Dependency lockfile refreshed
+- Production build revalidated successfully
 
-## Release-readiness checklist
+## Release-readiness status
 
-Before deployment or PR completion, verify:
+Based on the ticket evidence and handoff scope:
 
-1. **Brand content**
-   - Confirm final public name/brand text
-   - Confirm hero copy and professional positioning
-
-2. **External links**
-   - Replace placeholder GitHub, LinkedIn, Twitter/X, and project URLs as needed
-   - Confirm demo links target intended destinations
-
-3. **Contact information**
-   - Replace placeholder email, phone, and location if required
-   - Confirm contact form destination/handling strategy if real submissions are expected
-
-4. **Resume download**
-   - Add final resume asset and verify navbar/download wiring if enabled in the implementation
-
-5. **Metadata and sharing**
-   - Review page metadata and Open Graph values for production branding
-
-6. **Production validation**
-   - Run `npm install`
-   - Run `npm run build`
-   - Run `npm run start` or deploy to target hosting environment
+- **Implementation status:** complete
+- **Build status:** passing
+- **Issue classification:** security/version remediation
+- **Expected deploy outcome:** ready for automated PR and redeploy flow
 
 ## Reviewer guidance
 
-Reviewers should focus on:
+Reviewers should verify:
 
-- Fidelity to the requested premium AI-engineer portfolio aesthetic
-- Responsive section flow and content completeness
-- Accuracy of placeholder vs production-ready content
-- Whether deployment blockers remain outside documentation/content updates
+1. `package.json` reflects the patched Next.js dependency set
+2. `package-lock.json` is consistent with the dependency update
+3. No unnecessary application source changes were introduced for the fix
+4. Documentation clearly explains the deployment issue and the remediation
 
 ## Ownership boundary for this phase
 
-This Scribe phase intentionally avoided application source edits and only prepared markdown documentation artifacts for release handoff.
+This Scribe phase intentionally limited changes to markdown handoff artifacts only.
+
+No application source files were modified as part of this documentation pass.
