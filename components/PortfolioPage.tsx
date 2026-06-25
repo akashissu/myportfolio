@@ -105,7 +105,7 @@ export function PortfolioPage() {
           <div>
             <SectionHeading
               eyebrow="About Me"
-              title="I build AI products that look premium, behave clearly, and survive beyond the prototype phase."
+              title="Crafting ground-breaking AI solutions that look premium, behave clearly, and survive beyond the prototype phase."
               description="My work sits at the intersection of interface design, backend engineering, and applied AI. I care about products that feel refined on the front end, credible in the architecture, and useful in the real workflows they support."
             />
 
@@ -159,7 +159,7 @@ export function PortfolioPage() {
       >
         <SectionHeading
           eyebrow="Skills"
-          title="A full stack toolkit shaped for AI products, technical UX, and fast-moving teams."
+          title="An AI Engineer's toolbox optimized for creativity and impact, technical UX, and fast-moving teams."
           description="I work across the frontend, backend, and AI workflow layers so products can move from concept to production without losing cohesion."
           align="center"
         />

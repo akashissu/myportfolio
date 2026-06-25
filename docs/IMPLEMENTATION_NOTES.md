@@ -1,42 +1,52 @@
-# PAP-463 / PAP-464 Implementation Notes
+# PAP-465 Implementation Notes
 
 ## Purpose
 
-This document is a deployment and PR handoff artifact covering:
+This document is the deployment and PR handoff artifact for:
 
-- **PAP-463** — the portfolio implementation
-- **PAP-464** — the release-readiness/security remediation needed after Vercel flagged the framework version during deployment
+- **PAP-465** — Makes Some UI changes
 
-## PAP-464 issue summary
+The implementation for this ticket was already completed before the Scribe phase. This document records the architecture context, scope boundary, UI intent, and reviewer guidance for automated PR completion.
 
-The reported problem was not an application compile failure.
+## Ticket summary
 
-What happened:
+The request behind PAP-465 was to improve the portfolio interface so it looked more convincingly like a polished **AI Engineer portfolio**.
 
-- Vercel installed dependencies and ran `npm run build`
-- The application compiled and generated static pages successfully
-- After build completion, Vercel flagged the repository because it was using a vulnerable Next.js version
+This was a **UI/presentation refinement** ticket, not a backend expansion or framework migration.
 
-Conclusion:
+## Scope boundary
 
-- The issue was a **dependency security/remediation task**
-- The correct fix path was to upgrade the framework dependency set, not to rework portfolio UI code
+In scope:
 
-## Delivered architecture
+- interface polish
+- section hierarchy improvement
+- premium portfolio presentation
+- stronger AI-engineer visual identity
+- documentation and handoff updates
 
-The application remains a component-based Next.js App Router portfolio with centralized content data.
+Out of scope:
+
+- new backend/API routes
+- contact form backend integration
+- framework migration
+- repository remote changes
+- PR creation by the Scribe phase
+
+## Architecture retained
+
+The app remains a component-based **Next.js App Router** portfolio with centralized content data.
 
 ### Application shell
 
-- `app/page.tsx` renders the portfolio entry point
-- `app/layout.tsx` provides metadata and root layout structure
-- `app/globals.css` contains the visual system, responsive layout rules, and styling effects
+- `app/page.tsx` — portfolio entry point
+- `app/layout.tsx` — root layout and metadata
+- `app/globals.css` — global visual system, layout rules, and presentation styling
 
 ### Main composition
 
-- `components/PortfolioPage.tsx` assembles the single-page portfolio experience
+- `components/PortfolioPage.tsx` — assembles the single-page portfolio experience
 
-### Reusable UI components
+### Supporting UI components
 
 - `components/Navbar.tsx`
 - `components/Hero.tsx`
@@ -50,49 +60,76 @@ The application remains a component-based Next.js App Router portfolio with cent
 
 - `data/portfolio.ts`
 
-This file drives:
+This content layer remains the main source for:
 
-- Navigation items
-- Stats
-- Skills
-- Projects
-- Services
-- Experience timeline
-- Testimonials
-- Social links
-- Contact details
+- navigation items
+- quick stats
+- skills
+- projects
+- services
+- experience timeline
+- testimonials
+- social links
+- contact details
 
-## PAP-464 remediation summary
+## UI direction documented for PAP-465
 
-The release fix focused on dependency hygiene and deployment safety.
+The intended design outcome for this ticket is best described as:
 
-Completed implementation outcome:
+> a premium AI product engineer portfolio with stronger hierarchy, darker polished surfaces, and more convincing system-style visual cues.
 
-- Next.js dependency upgraded to a patched version
-- Matching `eslint-config-next` version upgraded as well
-- Dependency lockfile refreshed
-- Production build revalidated successfully
+Key design themes documented in planning/handoff:
+
+- AI command-center inspired hero presentation
+- stronger separation between sections and card types
+- improved portfolio storytelling in project showcases
+- reduced reliance on uniform glass cards everywhere
+- clearer premium dark-theme contrast discipline
+
+## External inspiration captured during handoff
+
+Documentation and release framing were informed by lightweight reference research around:
+
+- AI-themed hero sections and premium landing page patterns
+- dark bento-grid portfolio compositions
+- engineer portfolio showcases
+- modern portfolio trend collections emphasizing contrast, glow restraint, and system-inspired UI
+
+These references are used here only to explain the intended visual direction for reviewers and deploy owners.
 
 ## Release-readiness status
 
-Based on the ticket evidence and handoff scope:
+Based on the repository handoff state for this ticket:
 
-- **Implementation status:** complete
-- **Build status:** passing
-- **Issue classification:** security/version remediation
-- **Expected deploy outcome:** ready for automated PR and redeploy flow
+- **implementation status:** complete
+- **documentation status:** complete
+- **scope type:** UI refresh
+- **backend impact:** none required
+- **stack impact:** none required
+- **handoff status:** ready for automated PR flow
 
 ## Reviewer guidance
 
 Reviewers should verify:
 
-1. `package.json` reflects the patched Next.js dependency set
-2. `package-lock.json` is consistent with the dependency update
-3. No unnecessary application source changes were introduced for the fix
-4. Documentation clearly explains the deployment issue and the remediation
+1. the portfolio now reads more clearly as an **AI Engineer portfolio**
+2. hero and project presentation feel materially more premium
+3. the visual hierarchy is stronger across sections
+4. no unnecessary backend or framework changes were introduced
+5. documentation accurately reflects the ticket scope and release posture
+
+## Notes for deployment/PR completion
+
+Recommended final validation before merge or release:
+
+- run `npm install`
+- run `npm run build`
+- run `npm run lint`
+- check responsive presentation manually
+- confirm external links/contact details are production-ready
 
 ## Ownership boundary for this phase
 
-This Scribe phase intentionally limited changes to markdown handoff artifacts only.
+This Scribe phase intentionally modified **markdown documentation files only**.
 
-No application source files were modified as part of this documentation pass.
+No application source files were changed during this documentation pass.
